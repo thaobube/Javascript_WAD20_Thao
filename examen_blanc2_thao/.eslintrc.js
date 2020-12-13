@@ -21,5 +21,8 @@ module.exports = {
     'no-loop-func': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-filename-extension': 'off',
+    'prefer-destructuring': 'off',
+    radix: 'off',
+    'max-len': 'off',
   },
 };
