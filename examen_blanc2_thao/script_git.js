@@ -10,9 +10,8 @@ import {
 } from './src/views/carousel';
 import { selection } from './src/views/selection';
 import { renderMain, innerHtmlMain } from './src/views/main';
-import { state } from './src/data/state';
 
-// -----------------------------------------------------------
+// ----------------------
 
 const app = document.getElementById('app');
 
@@ -101,8 +100,6 @@ document.body.addEventListener('click', (e) => {
 // Event when we click to the button 'Close' - hide the popup
 document.body.addEventListener('click', (e) => {
   if (e.target.matches('.btn-close')) {
-    // important to add the preventDefaut: if not, after clicking the close button, it will reload the page and go up to the head of the page
-    e.preventDefault();
     const selectedBoxPopUp = e.target.parentNode.parentNode.parentNode.parentNode;
     // hide the Pop Up in the fix position
     const selectedPopUpFix = selectedBoxPopUp.querySelector('.fixed-center-popup');
@@ -132,7 +129,7 @@ function displayCarousel() {
 }
 displayCarousel();
 
-// Event when clicking on the heart: empty heart <=> filled heart + change the carousel display
+// Event when clicking on the heart: empty heart <=> filled hear + change the carousel display
 document.body.addEventListener('click', (e) => {
   if (e.target.matches('.far')) {
     e.target.classList.toggle('fas');
@@ -158,9 +155,18 @@ document.body.addEventListener('click', (e) => {
       console.log(randomTenFavoriteMovies);
       // Display new carousel
       carousel.innerHTML = renderCarousel(randomTenFavoriteMovies, 0);
-      // console.log(carousel);
+      console.log(carousel);
       // Event when clicking to next/previous arrow:
-      state.currentFirstIndex = 0;
+      document.body.addEventListener('click', (e) => {
+        if (e.target.matches('.fa-angle-right')) {
+          carousel.innerHTML = nextSlide(randomTenFavoriteMovies);
+        }
+      });
+      document.body.addEventListener('click', (e) => {
+        if (e.target.matches('.fa-angle-left')) {
+          carousel.innerHTML = previousSlide(randomTenFavoriteMovies);
+        }
+      });
     } else {
       // if there is no filled heart => display as default with ten general movies
       carousel.innerHTML = innerHtmlCarousel(randomTenGeneralMovies, 0);

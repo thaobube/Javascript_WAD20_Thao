@@ -6,3 +6,48 @@
 @import "./styles/variables";
 @import "./styles/fonts";
 @import "./styles/base";
+
+
+
+h2 {
+    background-color: $primary-color;
+    padding: 4px;
+    color: white;
+    margin-bottom: 60px;
+  }
+  #id {
+    position: relative;
+  }
+  #basket {
+    display: inline-block;
+    border: $primary-color solid 1px;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .basket-popup {  
+    width: 22%;
+    position: fixed;
+    top: 0px;
+    right: 20px;
+    z-index: 1;
+  }
+  
+  .basket__title {
+    background-color: lightblue;
+    margin-top: 10px;
+    display: inline-block;
+    padding: 6px;
+    border-radius: 5px;
+  }
+  
+  .basket__content {
+    border: rgb(226, 225, 225) solid 1px;
+    text-align: left;
+    background-color: white;
+  }
+  
+.display-more {
+    display: none;
+}

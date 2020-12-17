@@ -1,3 +1,4 @@
+import { state } from '../data/state';
 // Create a function to display the 3 movies in the 10 selected in the carousel (from the current first image index)
 
 export function innerHtmlCarousel(array, firstIndex) {
@@ -51,23 +52,24 @@ export function renderCarousel(array, firstIndex) {
 }
 
 // Create a function to change the 3 movies when clicking to next/previous arrow
-let currentFirstIndex = 0;
 let contentInnerHtml = '';
 export function nextSlide(array) {
-  if (currentFirstIndex <= 6) {
-    currentFirstIndex += 1;
-    contentInnerHtml = innerHtmlCarousel(array, currentFirstIndex);
+  if (state.currentFirstIndex <= 6) {
+    state.currentFirstIndex += 1;
+    contentInnerHtml = innerHtmlCarousel(array, state.currentFirstIndex);
   } else {
-    contentInnerHtml = innerHtmlCarousel(array, currentFirstIndex);
+    contentInnerHtml = innerHtmlCarousel(array, state.currentFirstIndex);
   }
+  console.log(state.currentFirstIndex);
   return contentInnerHtml;
 }
 export function previousSlide(array) {
-  if (currentFirstIndex >= 1) {
-    currentFirstIndex -= 1;
-    contentInnerHtml = innerHtmlCarousel(array, currentFirstIndex);
+  if (state.currentFirstIndex >= 1) {
+    state.currentFirstIndex -= 1;
+    contentInnerHtml = innerHtmlCarousel(array, state.currentFirstIndex);
   } else {
-    contentInnerHtml = innerHtmlCarousel(array, currentFirstIndex);
+    contentInnerHtml = innerHtmlCarousel(array, state.currentFirstIndex);
   }
+  console.log(state.currentFirstIndex);
   return contentInnerHtml;
 }
